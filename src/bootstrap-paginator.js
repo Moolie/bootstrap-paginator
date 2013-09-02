@@ -239,7 +239,7 @@
                 size = this.options.size || "normal",
                 alignment = this.options.alignment || "left",
                 pages = this.getPages(),
-                listContainer = $("<ul></ul>"),
+                listContainer = $("<ul class='pagination'></ul>"),
                 listContainerClass =  this.getValueFromOption(this.options.listContainerClass, listContainer),
                 first = null,
                 prev = null,
@@ -251,35 +251,6 @@
 
             this.$element.prop("class", "");
 
-            this.$element.addClass("pagination");
-
-            switch (size.toLowerCase()) {
-            case "large":
-                this.$element.addClass("pagination-large");
-                break;
-            case "small":
-                this.$element.addClass("pagination-small");
-                break;
-            case "mini":
-                this.$element.addClass("pagination-mini");
-                break;
-            default:
-                break;
-            }
-
-            switch (alignment.toLowerCase()) {
-
-            case "center":
-                this.$element.addClass("pagination-centered");
-                break;
-            case "right":
-                this.$element.addClass("pagination-right");
-                break;
-            default:
-                break;
-
-            }
-
             this.$element.addClass(containerClass);
 
             //empty the outter most container then add the listContainer inside.
@@ -288,6 +259,29 @@
             this.$element.append(listContainer);
 
             listContainer.addClass(listContainerClass);
+
+            switch (size.toLowerCase()) {
+            case "large":
+                listContainer.addClass("pagination-lg");
+                break;
+            case "small":
+                listContainer.addClass("pagination-sm");
+                break;
+            default:
+                break;
+            }
+
+            switch (alignment.toLowerCase()) {
+
+            case "center":
+                this.$element.addClass("text-center");
+                break;
+            case "right":
+                this.$element.addClass("text-right");
+                break;
+            default:
+                break;
+            }
 
             //update the page element reference
             this.pageRef = [];
